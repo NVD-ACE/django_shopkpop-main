@@ -16,7 +16,7 @@ Mật khẩu: admin
 
 ### Kết Quả
 
-- Trang Chủ
+<!-- - Trang Chủ
 
 ![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/efd6d1c7-bb6a-4acd-9b9b-ce5352835bb0)
 
@@ -38,4 +38,4 @@ Mật khẩu: admin
 
 - Liên Hệ
 
-![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/cb436a06-8276-4c25-bb8a-ea4f5a8462f8)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/cb436a06-8276-4c25-bb8a-ea4f5a8462f8) -->
