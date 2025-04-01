@@ -18,24 +18,24 @@ Mật khẩu: admin
 
 - Trang Chủ
 
-![image](https://github.com/namchuminh/django_shopkpop/assets/41958727/efd6d1c7-bb6a-4acd-9b9b-ce5352835bb0)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/efd6d1c7-bb6a-4acd-9b9b-ce5352835bb0)
 
 - Sản Phẩm
 
-![image](https://github.com/namchuminh/django_shopkpop/assets/41958727/380a6501-5872-4ea1-81c3-c06eb9d2b37a)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/380a6501-5872-4ea1-81c3-c06eb9d2b37a)
 
 - Giỏ Hàng
 
-![image](https://github.com/namchuminh/django_shopkpop/assets/41958727/9306f7c3-c0b2-4f25-be5e-c5e4ad13be9b)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/9306f7c3-c0b2-4f25-be5e-c5e4ad13be9b)
 
 - Tin Tức
 
-![image](https://github.com/namchuminh/django_shopkpop/assets/41958727/e4b7c48c-4a7e-4b37-ad3e-07b3887c63a0)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/e4b7c48c-4a7e-4b37-ad3e-07b3887c63a0)
 
 - Thanh Toán
 
-![image](https://github.com/namchuminh/django_shopkpop/assets/41958727/5d27deb3-ed38-4f8b-a1ba-97467d74dfee)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/5d27deb3-ed38-4f8b-a1ba-97467d74dfee)
 
 - Liên Hệ
 
-![image](https://github.com/namchuminh/django_shopkpop/assets/41958727/cb436a06-8276-4c25-bb8a-ea4f5a8462f8)
+![image](https://github.com/NVD-ACE/django_shopkpop-main/assets/41958727/cb436a06-8276-4c25-bb8a-ea4f5a8462f8)
