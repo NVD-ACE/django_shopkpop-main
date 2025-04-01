@@ -1,0 +1,506 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        {% for item in thongtin_load %}
+            {% if item.LoaiThongTin.MaLoai == 'tieudeweb' %}
+                {{ item.GiaTri }}
+            {% endif %}
+        {% endfor %} - {% block title%}{% endblock title %}
+    </title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% for item in thongtin_load %}
+        {% if item.LoaiThongTin.MaLoai == 'favicon' %}
+            <link rel="shortcut icon" href="{{ item.HinhAnh.url }}" type="image/x-icon" />
+        {% endif %}
+    {% endfor %}
+    <link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body>
+
+<div class="body-wrapper">
+
+    <header class="ltn__header-area ltn__header-3 section-bg-6">        
+        <div class="ltn__header-middle-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="site-logo">
+                            {% for item in thongtin_load %}
+                                {% if item.LoaiThongTin.MaLoai == 'logo' %}
+                                    <a href="{% url 'home' %}"><img src="{{ item.HinhAnh.url }}" alt="Logo"></a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col header-contact-serarch-column d-none d-xl-block">
+                        <div class="header-contact-search">
+                            <!-- header-feature-item -->
+                            <div class="header-feature-item">
+                                <div class="header-feature-icon">
+                                    <i class="icon-phone"></i>
+                                </div>
+                                <div class="header-feature-info">
+                                    <h6>Số Điện Thoại</h6>
+                                    <p><a href="tel:0999888888">
+                                            {% for item in thongtin_load %}
+                                                {% if item.LoaiThongTin.MaLoai == 'sodienthoai' %}
+                                                    {{ item.GiaTri }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- header-search-2 -->
+                            <div class="header-search-2">
+                                <form action="{% url 'product' %}">
+                                    <input type="text" name="s" value="" placeholder="Nhập tên sản phẩm cần tìm..."/>
+                                    <button type="submit">
+                                        <span><i class="icon-magnifier"></i></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- header-options -->
+                        <div class="ltn__header-options">
+                            <ul>
+                                <li class=""> 
+                                    <!-- user-menu -->
+                                    <div class="ltn__drop-menu user-menu">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="icon-user"></i></a>
+
+                                                {% if user.is_authenticated %}
+                                                    <ul>
+                                                        <li><a href="{% url 'customer' %}">CÁ NHÂN</a></li>
+                                                        <li><a href="{% url 'customer_logout' %}">ĐĂNG XUẤT</a></li>
+                                                    </ul>
+                                                {% else %}
+                                                    <ul>
+                                                        <li><a href="{% url 'customer_login' %}">ĐĂNG NHẬP</a></li>
+                                                        <li><a href="{% url 'customer_register' %}">ĐĂNG KÝ</a></li>
+                                                    </ul>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <!-- mini-cart 2 -->
+                                    <div class="mini-cart-icon mini-cart-icon-2">
+                                        <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                                            <span class="mini-cart-icon">
+                                                <i class="icon-handbag"></i>
+                                                {% if giohang_load.count >= 1 %}
+                                                    <sup>{{ giohang_load.count }}</sup>
+                                                {% else %}
+                                                    <sup>0</sup>
+                                                {% endif %}
+                                            </span>
+                                            <h6>
+                                                {% if total_price > 0 %}
+                                                    <span>Giỏ Hàng</span> <span class="ltn__secondary-color" style="text-transform: lowercase;">{{ total_price }} đ</span>
+                                                {% else %}
+                                                    <span>Giỏ Hàng</span> <span class="ltn__secondary-color" style="text-transform: lowercase;">0 đ</span>
+                                                {% endif %}
+                                            </h6>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>      
+                                    <!-- Mobile Menu Button -->
+                                    <div class="mobile-menu-toggle d-lg-none">
+                                        <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
+                                            <svg viewBox="0 0 800 600">
+                                                <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                                                <path d="M300,320 L540,320" id="middle"></path>
+                                                <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ltn__header-middle-area end -->
+        
+        <!-- header-bottom-area start -->
+        <div class="header-bottom-area ltn__border-top ltn__header-sticky  ltn__sticky-bg-white ltn__primary-bg---- menu-color-white---- d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col header-menu-column justify-content-center">
+                        <div class="sticky-logo">
+                            <div class="site-logo">
+                                {% for item in thongtin_load %}
+                                    {% if item.LoaiThongTin.MaLoai == 'logo' %}
+                                        <a href="{% url 'home' %}"><img src="{{ item.HinhAnh.url }}" alt="Logo"></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="header-menu header-menu-2">
+                            <nav>
+                                <div class="ltn__main-menu">
+                                    <ul>
+                                        <li class="menu-icon"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                                        <li class="menu-icon"><a href="{% url 'product' %}">Sản Phẩm</a></li>
+                                        <li class="menu-icon"><a href="{% url 'category' %}">Chuyên Mục</a>
+                                            <ul>
+                                                {% for item in chuyenmuc_load %}
+                                                    <li><a href="{% url 'detail_category' slug=item.DuongDan %}">{{ item.TenChuyenMuc }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li class="menu-icon"><a href="{% url 'list_news' %}">Tin Tức</a></li>
+                                        <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header-bottom-area end -->
+    </header>
+    <!-- HEADER AREA END -->
+
+    <!-- Utilize Cart Menu Start -->
+    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <span class="ltn__utilize-menu-title">Giỏ Hàng</span>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+            <div class="mini-cart-product-area ltn__scrollbar">
+
+                {% if user.is_authenticated %}
+                    {% if count_product >= 1 %}
+                        {% for item in giohang_load %}
+                            <div class="mini-cart-item clearfix">
+                                <div class="mini-cart-img">
+                                    <a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}"><img src="{{ item.SanPham.AnhChinh.url }}" alt="Image"></a>
+                                </div>
+                                <div class="mini-cart-info">
+                                    <h6><a href="{% url 'detail_product' slug=item.SanPham.DuongDan %}">{{ item.SanPham.TenSanPham }}</a></h6>
+                                    <span class="mini-cart-quantity">{{ item.SoLuong }} x {{ item.GiaBan }}đ</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-info text-center">
+                                <h6><a href="{% url 'cart_list' %}" style="font-size: 17px; font-weight: 400;">Giỏ Hàng Đang Trống!</a></h6>
+                                <br>
+                                <a class="btn btn-success" href="{% url 'product' %}">MUA SẮM SẢN PHẨM</a>                        
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="mini-cart-item clearfix">
+                        <div class="mini-cart-info text-center">
+                            <h6><a href="{% url 'customer_login' %}">Đăng Nhập Để Xem Giỏ Hàng!</a></h6>                        
+                        </div>
+                    </div>
+                {% endif%}
+            </div>
+            {% if user.is_authenticated %}
+                {% if count_product >= 1 %}
+                    <div class="mini-cart-footer">
+                        <div class="mini-cart-sub-total">
+                            <h5>Tổng Tiền: <span>{{ total_price }}đ</span></h5>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="{% url 'cart_list' %}" class="theme-btn-1 btn btn-effect-1">Sửa Giỏ Hàng</a>
+                            <a href="{% url 'pay_cart' %}" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
+                        </div>
+                        <p>Phí ship cho tất cả đơn hàng: 
+                            {% for item in thongtin_load %}
+                                {% if item.LoaiThongTin.MaLoai == 'phiship' %}
+                                    {{ item.GiaTri }}đ
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="mini-cart-footer">
+                    <div class="btn-wrapper">
+                        <a href="{% url 'customer_login' %}" class="theme-btn-1 btn btn-effect-1">Đăng Nhập</a>
+                        <a href="{% url 'customer_register' %}" class="theme-btn-2 btn btn-effect-2">Đăng Ký</a>
+                    </div>
+                </div>
+            {% endif%}
+        </div>
+    </div>
+    <!-- Utilize Cart Menu End -->
+
+    <!-- Utilize Mobile Menu Start -->
+    <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <div class="site-logo">
+                    {% for item in thongtin_load %}
+                        {% if item.LoaiThongTin.MaLoai == 'logo' %}
+                            <a href="{% url 'home' %}"><img src="{{ item.HinhAnh.url }}" alt="Logo"></a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+            <div class="ltn__utilize-menu-search-form">
+                <form action="{% url 'product' %}">
+                    <input type="text" name="s" placeholder="Nhập tên sản phẩm cần tìm...">
+                    <button type="submit"><i class="icon-magnifier"></i></button>
+                </form>
+            </div>
+            <div class="ltn__utilize-menu">
+                <ul>
+                    <li class="menu-icon"><a href="{% url 'home' %}">Trang Chủ</a></li>
+                    <li class="menu-icon"><a href="{% url 'product' %}">Sản Phẩm</a></li>
+                    <li><a href="{% url 'category' %}">Chuyên Mục</a>
+                        <ul class="sub-menu">
+                            {% for item in chuyenmuc_load %}
+                                <li><a href="{% url 'detail_category' slug=item.DuongDan %}">{{ item.TenChuyenMuc }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'list_news' %}">Tin Tức</a></li>
+                    <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
+                </ul>
+            </div>
+            <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
+                <ul>
+                    <li>
+                        <a href="account.html" title="My Account">
+                            <span class="utilize-btn-icon">
+                                <i class="icon-user"></i>
+                            </span>
+                            Tài Khoản
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html" title="Shoping Cart">
+                            <span class="utilize-btn-icon">
+                                <i class="icon-handbag"></i>
+                                <sup>5</sup>
+                            </span>
+                            Giỏ Hàng
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ltn__social-media-2">
+                <ul>
+                    <li><a href="#" title="Facebook"><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a></li>
+                    <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
+                    <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+    {% block content%}
+    {% endblock content %}
+
+    <!-- BRAND LOGO AREA START -->
+    <div class="ltn__brand-logo-area  ltn__brand-logo-1 section-bg-1 pt-35 pb-35 plr--5">
+        <div class="container-fluid">
+            <div class="row ltn__brand-logo-active">
+
+                {% for item in nhataitro_load %}
+                    <div class="col-lg-12">
+                        <div class="ltn__brand-logo-item">
+                            <img src="{{ item.HinhAnh.url }}" alt="Brand Logo">
+                        </div>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+    <!-- BRAND LOGO AREA END -->
+
+    <!-- FOOTER AREA START -->
+    <footer class="ltn__footer-area ">
+        <div class="footer-top-area  section-bg-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">Khách Hàng</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="{% url 'customer' %}">Tài Khoản</a></li>
+                                    <li><a href="{% url 'cart_list' %}">Giỏ Hàng</a></li>
+                                    <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
+                                    <li><a href="#">Yêu Thích</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">Cửa Hàng</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
+                                    <li><a href="{% url 'contact' %}">Địa Chỉ</a></li>
+                                    <li><a href="{% url 'product' %}">Sản Phẩm</a></li>
+                                    <li><a href="{% url 'list_news' %}">Tin Tức</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">Thông Tin</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="#">Về Chúng Tôi</a></li>
+                                    <li><a href="#">Giới Thiệu</a></li>
+                                    <li><a href="#">Tuyển Dụng</a></li>
+                                    <li><a href="#">Chính Sách</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-menu-widget clearfix">
+                            <h4 class="footer-title">CSKH</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="#">Thông Tin Giao Hàng</a></li>
+                                    <li><a href="#">Tư Vấn & Liên Hệ</a></li>
+                                    <li><a href="#">Bảo Hành & Hoàn Trả</a></li>
+                                    <li><a href="#">Mua Hàng Online</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-6 col-12">
+                        <div class="footer-widget footer-about-widget">
+                            <h4 class="footer-title">VỀ CHÚNG TÔI</h4>
+                            <div class="footer-logo d-none">
+                                <div class="site-logo">
+                                    <img src="img/logo.png" alt="Logo">
+                                </div>
+                            </div>
+                            {% for item in thongtin_load %}
+                                {% if item.LoaiThongTin.MaLoai == 'gioithieu' %}
+                                    <p>{{ item.GiaTri }}</p>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            <div class="footer-address">
+                                <ul>
+                                    {% for item in thongtin_load %}
+                                        {% if item.LoaiThongTin.MaLoai == 'diachi' %}
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-location-pin"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p>{{ item.GiaTri }}</p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+
+                                        {% if item.LoaiThongTin.MaLoai == 'sodienthoai' %}
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-phone"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p><a href="">{{ item.GiaTri }}</a></p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+
+                                        {% if item.LoaiThongTin.MaLoai == 'email' %}
+                                            <li>
+                                                <div class="footer-address-icon">
+                                                    <i class="icon-envelope"></i>
+                                                </div>
+                                                <div class="footer-address-info">
+                                                    <p><a href="mailto:{{ item.GiaTri }}">{{ item.GiaTri }}</a></p>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                            <div class="ltn__social-media mt-20">
+                                <ul>
+                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ltn__copyright-area ltn__copyright-2 section-bg-5">
+            <div class="container ltn__border-top-2">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="footer-copyright-left">
+                            <div class="ltn__copyright-design clearfix">
+                                <p>&copy; <span class="current-year"></span> - Bản quyền thuộc 
+                                    {% for item in thongtin_load %}
+                                        {% if item.LoaiThongTin.MaLoai == 'tieudeweb' %}
+                                            {{ item.GiaTri }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER AREA END -->
+</div>
+<!-- Body main wrapper end -->
+
+    <!-- preloader area start -->
+    <div class="preloader d-none" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!-- All JS Plugins -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
