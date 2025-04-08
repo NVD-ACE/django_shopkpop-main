@@ -37,25 +37,41 @@ class SanPham(models.Model):
         return self.TenSanPham
     
     
+# class ChuyenMuc(models.Model):
+#     TenChuyenMuc = models.CharField(max_length=255)
+#     DuongDan = models.SlugField(blank=True, null=True)
+#     HinhAnh = models.ImageField(upload_to ='uploads/', blank=True, null=True)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+    
+#     class Meta:
+#         verbose_name = "Chuyên Mục"
+#         verbose_name_plural = "Chuyên Mục"
+        
+#     def save(self, *args, **kwargs):
+#         self.DuongDan = slugify(self.TenChuyenMuc)
+#         super(ChuyenMuc, self).save(*args, **kwargs)
+    
+#     def __str__(self):
+#         return self.TenChuyenMuc
+    
 class ChuyenMuc(models.Model):
-    TenChuyenMuc = models.CharField(max_length=255)
+    TenChuyenMuc = models.CharField(max_length=255, blank=False, null=False)  # Thêm ràng buộc
     DuongDan = models.SlugField(blank=True, null=True)
-    HinhAnh = models.ImageField(upload_to ='uploads/', blank=True, null=True)
+    HinhAnh = models.ImageField(upload_to='uploads/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         verbose_name = "Chuyên Mục"
         verbose_name_plural = "Chuyên Mục"
-        
+
     def save(self, *args, **kwargs):
         self.DuongDan = slugify(self.TenChuyenMuc)
         super(ChuyenMuc, self).save(*args, **kwargs)
-    
+
     def __str__(self):
         return self.TenChuyenMuc
-    
-    
 class MauSac(models.Model):
     TenMauSac = models.CharField(max_length=255)
     MaMauSac = models.CharField(max_length=255)
