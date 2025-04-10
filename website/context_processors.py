@@ -35,6 +35,7 @@ def giohang_context_processor(request):
 
 def base_url(request):
     scheme = 'https' if request.is_secure() else 'http'
-    host = request.META['HTTP_HOST']
+    # host = request.META['HTTP_HOST']
+    host = request.META.get('HTTP_HOST', 'localhost')
     base_url = f"{scheme}://{host}"
     return {'base_url': base_url}
