@@ -36,9 +36,9 @@
                             <div class="col-lg-3">
                                 <div class="ltn__tab-menu-list mb-50">
                                     <div class="nav">
-                                        <a data-bs-toggle="tab" href="#liton_tab_1_2">Đơn Hàng <i class="fas fa-file-alt"></i></a>
-                                        <a data-bs-toggle="tab" href="#liton_tab_1_4">Thông Tin <i class="fas fa-user"></i></a>
-                                        <a data-bs-toggle="tab" href="#liton_tab_1_5">Cài Đặt <i class="fas fa-user"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_tab_1_2">Thông tin <i class="fas fa-file-alt"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_tab_1_4">Đơn hàng <i class="fas fa-user"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_tab_1_5">Cập nhật thông tin <i class="fas fa-user"></i></a>
                                         <a href="{% url 'customer_logout' %}">Đăng Xuất <i class="fas fa-sign-out-alt"></i></a>
                                     </div>
                                 </div>
@@ -46,6 +46,29 @@
                             <div class="col-lg-9">
                                 <div class="tab-content">
                                     <div class="tab-pane fade active show" id="liton_tab_1_2">
+                                        <div class="ltn__myaccount-tab-content-inner">
+                                            <p>Các địa chỉ sau sẽ được sử dụng mặc định trên trang thanh toán.</p>
+                                            <div class="row">
+                                                <div class="col-md-6 col-12 learts-mb-30">
+                                                    <h4>Thông Tin Khách Hàng <small></small></h4>
+                                                    <address>
+                                                        <p><strong>{{ khachhang.User.first_name }} {{ khachhang.User.last_name }}</strong></p>
+                                                        <p>Địa chỉ: {{ khachhang.DiaChi }}</p>
+                                                        <p>Số điện thoại: {{ khachhang.SoDienThoai }}</p>
+                                                        <p>Email: {{ khachhang.User.email }}</p>
+                                                    </address>
+                                                </div>
+                                                <div class="col-md-6 col-12 learts-mb-30">
+                                                    <h4>Thông Tin Giao Hàng <small></small></h4>
+                                                    <address>
+                                                        <p>Địa chỉ: {{ khachhang.DiaChi }}</p>
+                                                        <p>Số điện thoại: {{ khachhang.SoDienThoai }}</p>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="liton_tab_1_4">
                                         <div class="ltn__myaccount-tab-content-inner">
                                             <div class="table-responsive">
                                                 <table class="table">
@@ -96,29 +119,6 @@
                                                         {% endfor %}
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="liton_tab_1_4">
-                                        <div class="ltn__myaccount-tab-content-inner">
-                                            <p>Các địa chỉ sau sẽ được sử dụng mặc định trên trang thanh toán.</p>
-                                            <div class="row">
-                                                <div class="col-md-6 col-12 learts-mb-30">
-                                                    <h4>Thông Tin Khách Hàng <small></small></h4>
-                                                    <address>
-                                                        <p><strong>{{ khachhang.User.first_name }} {{ khachhang.User.last_name }}</strong></p>
-                                                        <p>Địa chỉ: {{ khachhang.DiaChi }}</p>
-                                                        <p>Số điện thoại: {{ khachhang.SoDienThoai }}</p>
-                                                        <p>Email: {{ khachhang.User.email }}</p>
-                                                    </address>
-                                                </div>
-                                                <div class="col-md-6 col-12 learts-mb-30">
-                                                    <h4>Thông Tin Giao Hàng <small></small></h4>
-                                                    <address>
-                                                        <p>Địa chỉ: {{ khachhang.DiaChi }}</p>
-                                                        <p>Số điện thoại: {{ khachhang.SoDienThoai }}</p>
-                                                    </address>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

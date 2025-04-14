@@ -9,8 +9,8 @@ class LienHe(models.Model):
     NoiDung = models.TextField()
     
     class Meta:
-        verbose_name = "Liên Hệ"
-        verbose_name_plural = "Liên Hệ"
+        verbose_name = "Phản hồi"
+        verbose_name_plural = "Phản hồi"
         
     def __str__(self):
         return self.TenKhachHang + " - " + self.TieuDe

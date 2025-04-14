@@ -6,7 +6,7 @@ class ChiTietDonHangInline(admin.TabularInline):
 
 class DonHangAdmin(admin.ModelAdmin):
     inlines = [ChiTietDonHangInline]
-    readonly_fields = ("id", "KhachHang", "SoDienThoai", "DiaChi", "TongTien", "GhiChu", "ThoiGian")
+    readonly_fields = ("id", "ThoiGian", "TongTien")
 
 class ChiTietDonHangAdmin(admin.ModelAdmin):
     readonly_fields = ("id", "SanPham", "DonHang", "GiaBan", "SoLuong", "TongTien")

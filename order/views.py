@@ -96,6 +96,6 @@ class PayCart(View):
                 chitietdonhang.save()
             
             giohang.delete()
-            return redirect('customer')
+            return redirect('/') # chuyển đến giao diện trang chủ
         except:
             return render(request, template_error)

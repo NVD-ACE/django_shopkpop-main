@@ -179,7 +179,7 @@ class CustomerLogin(View):
             if user:
                 if user.is_active:
                     login(request, user)
-                    return redirect('customer')
+                    return redirect('/') # đăng nhập thành công chuyển về trang chủ
                 else:
                     data['message'] = "Tài khoản của bạn đang bị khóa!"
                     return render(request, self.template_name, data)
