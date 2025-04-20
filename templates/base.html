@@ -168,7 +168,7 @@
                                             </ul>
                                         </li>
                                         <li class="menu-icon"><a href="{% url 'list_news' %}">Tin Tức</a></li>
-                                        <li><a href="{% url 'contact' %}">Liên Hệ</a></li>
+                                        <li><a href="{% url 'contact' %}">Phản hồi</a></li> 
                                     </ul>
                                 </div>
                             </nav>
@@ -230,13 +230,6 @@
                             <a href="{% url 'cart_list' %}" class="theme-btn-1 btn btn-effect-1">Sửa Giỏ Hàng</a>
                             <a href="{% url 'pay_cart' %}" class="theme-btn-2 btn btn-effect-2">Thanh Toán</a>
                         </div>
-                        <p>Phí ship cho tất cả đơn hàng: 
-                            {% for item in thongtin_load %}
-                                {% if item.LoaiThongTin.MaLoai == 'phiship' %}
-                                    {{ item.GiaTri }}đ
-                                {% endif %}
-                            {% endfor %}
-                        </p>
                     </div>
                 {% endif %}
             {% else %}

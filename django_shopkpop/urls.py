@@ -9,7 +9,7 @@ urlpatterns = [
     path('san-pham/', include('product.urls')),
     path('chuyen-muc/', include('category.urls')),
     path('tin-tuc/', include('news.urls')),
-    path('lien-he/', include('contact.urls')),
+    path('phan-hoi/', include('contact.urls')),
     path('khach-hang/', include('customer.urls')),
     path('gio-hang/', include('cart.urls')),
     path('thanh-toan/', include('order.urls')),

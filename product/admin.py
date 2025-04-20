@@ -12,7 +12,7 @@ class SanPhamAdmin(admin.ModelAdmin):
     list_display = ('id', 'get_hinhanh','get_tensanpham', 'get_motangan', 'get_chuyenmuc', 'get_giaban', 'gia_khuyenmai', 'get_trangthai')
     list_per_page = 10
     search_fields = ('SanPham__TenSanPham', 'SanPham__MoTaNgan')
-    list_filter = ('ChuyenMuc__TenChuyenMuc', 'TrangThai', 'PhanTramGiam', 'MauSac__TenMauSac')
+    list_filter = ('ChuyenMuc__TenChuyenMuc', 'TrangThai', 'GiaBan', 'PhanTramGiam', 'MauSac__TenMauSac') # add thêm lọc theo giá bán
     readonly_fields = ('display_hinh_anh',)  # Trường chỉ đọc để hiển thị hình ảnh
 
     def get_hinhanh(self, obj):
@@ -51,7 +51,7 @@ class SanPhamAdmin(admin.ModelAdmin):
 
 @admin.register(MauSac)
 class MauSacAdmin(admin.ModelAdmin):
-    readonly_fields = ("id", "TenMauSac", "MaMauSac")
+    readonly_fields = ("id",)
 
 @admin.register(ChuyenMuc)
 class ChuyenMucAdmin(admin.ModelAdmin):
