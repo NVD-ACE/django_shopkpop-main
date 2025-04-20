@@ -51,7 +51,7 @@ class SanPhamAdmin(admin.ModelAdmin):
 
 @admin.register(MauSac)
 class MauSacAdmin(admin.ModelAdmin):
-    readonly_fields = ("id")
+    readonly_fields = ("id",)
 
 @admin.register(ChuyenMuc)
 class ChuyenMucAdmin(admin.ModelAdmin):

@@ -17,10 +17,10 @@ class Contact(View):
             if(request.user.is_authenticated):
                 user = User.objects.all().get(username=request.user.username)
                 khachhang = KhachHang.objects.all().get(User=user)
-                data = {"title": "Liên Hệ Với Chúng Tôi", "khachhang": khachhang}
+                data = {"title": "Phản Hồi Với Chúng Tôi", "khachhang": khachhang}
                 return render(request, self.template_name, data)
             else:
-                data = {"title": "Liên Hệ Với Chúng Tôi"}
+                data = {"title": "Phản Hồi Với Chúng Tôi"}
                 return render(request, self.template_name, data)
         except:
             return render(request, template_error)
@@ -34,17 +34,17 @@ class Contact(View):
             message = request.POST['message']
             
             if(name == "" or email == "" or phone == "" or subject == "" or message == ""): 
-                data = {"title": "Liên Hệ Với Chúng Tôi", "errorMessage": "Vui lòng nhập đủ thông tin!"}
+                data = {"title": "Phản Hồi Với Chúng Tôi", "errorMessage": "Vui lòng nhập đủ thông tin!"}
                 return render(request, self.template_name, data)
             
             phone_regex = re.compile(r'^(03|05|07|08|09)\d{8}$')
             if(bool(phone_regex.match(phone)) == False):
-                data = {"title": "Liên Hệ Với Chúng Tôi", "errorMessage": "Vui lòng nhập số điện thoại chính xác!"}
+                data = {"title": "Phản Hồi Với Chúng Tôi", "errorMessage": "Vui lòng nhập số điện thoại chính xác!"}
                 return render(request, self.template_name, data)
             
             pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
             if(bool(re.match(pattern, email)) == False):
-                data = {"title": "Liên Hệ Với Chúng Tôi", "errorMessage": "Vui lòng nhập email hợp lệ!"}
+                data = {"title": "Phản Hồi Với Chúng Tôi", "errorMessage": "Vui lòng nhập email hợp lệ!"}
                 return render(request, self.template_name, data)
             
             
@@ -54,10 +54,10 @@ class Contact(View):
             if(request.user.is_authenticated):
                 user = User.objects.all().get(username=request.user.username)
                 khachhang = KhachHang.objects.all().get(User=user)
-                data = {"title": "Liên Hệ Với Chúng Tôi", "khachhang": khachhang, "success": "Cảm ơn bạn đã gửi liên hệ!"}
+                data = {"title": "Phản Hồi Với Chúng Tôi", "khachhang": khachhang, "success": "Cảm ơn bạn đã gửi phản hồi!"}
                 return render(request, self.template_name, data)
             else:
-                data = {"title": "Liên Hệ Với Chúng Tôi", "success": "Cảm ơn bạn đã gửi liên hệ!"}
+                data = {"title": "Phản Hồi Với Chúng Tôi", "success": "Cảm ơn bạn đã gửi phản hồi!"}
                 return render(request, self.template_name, data)
         
         except:
