@@ -45,7 +45,7 @@ class PayCart(View):
             thanhtoan = int(total_price + int(phiship)) 
             thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
             
-            data = {"title": "Thanh Toán", "khachhang": khachhang, "phiship": phiship, "phivat": phivat, "thanhtoan": thanhtoan, "giohang": giohang}
+            data = {"title": "Đặt hàng", "khachhang": khachhang, "phiship": phiship, "phivat": phivat, "thanhtoan": thanhtoan, "giohang": giohang}
             return render(request, self.template_name, data)
         except:
             return render(request, template_error)
@@ -75,7 +75,7 @@ class PayCart(View):
             
             phone_regex = re.compile(r'^(03|05|07|08|09)\d{8}$')
             if(bool(phone_regex.match(phone)) == False):
-                data = {"title": "Thanh Toán", "khachhang": khachhang, "phiship": phiship, "phivat": phivat, "thanhtoan": thanhtoan, "giohang": giohang, "errorMessage": "Vui Lòng Nhập Số Điện Thoại Hợp Lệ!"}
+                data = {"title": "Đặt hàng", "khachhang": khachhang, "phiship": phiship, "phivat": phivat, "thanhtoan": thanhtoan, "giohang": giohang, "errorMessage": "Vui Lòng Nhập Số Điện Thoại Hợp Lệ!"}
                 return render(request, self.template_name, data)
             
             loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phiship")
