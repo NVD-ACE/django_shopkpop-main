@@ -59,7 +59,7 @@ def test_get_pay_cart_success(client, setup_data):
     client.force_login(setup_data['user'])
     response = client.get(reverse('pay_cart'), **{'HTTP_HOST': 'testserver'})
 
-    assert response.context['title'] == 'Thanh Toán'
+    assert response.context['title'] == 'Đặt hàng'
     assert response.context['giohang'].count() == 1
     assert response.context['khachhang'] == setup_data['khachhang']
     assert int(response.context['phiship']) == 10
@@ -74,7 +74,7 @@ def test_get_pay_cart_cart_empty(client, setup_data):
     client.force_login(setup_data['user'])
     response = client.get(reverse('pay_cart'), **{'HTTP_HOST': 'testserver'})
 
-    assert response.context['title'] == 'Thanh Toán'
+    assert response.context['title'] == 'Đặt hàng'
     assert response.context['giohang'].count() == 0
     assert response.context['khachhang'] == setup_data['khachhang']
     assert int(response.context['phiship']) == 10
@@ -211,7 +211,7 @@ def test_post_pay_cart_invalid_phone(client, setup_data):
         'ghichu': ''
     },**{'HTTP_HOST': 'testserver'})
 
-    assert response.context['title'] == 'Thanh Toán'
+    assert response.context['title'] == 'Đặt hàng'
     assert response.context['giohang'].count() == 1
     assert response.context['khachhang'] == setup_data['khachhang']
     assert int(response.context['phiship']) == 10
