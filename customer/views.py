@@ -130,8 +130,7 @@ class CustomerOrderDetail(View):
                 total_price += item.SoLuong * item.GiaBan
                 item.GiaTien = item.GiaBan * item.SoLuong
 
-            thanhtoan = int(total_price + int(phiship)) 
-            thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+            thanhtoan = int(total_price + total_price * int(phivat) / 100 + int(phiship))
 
             data = {"title": "Thông Tin Đơn Hàng ĐH000" + str(id), "chitietdonhang": chitietdonhang, "madon": id, "phiship": phiship, "phivat": phivat, "thanhtoan": thanhtoan, "tongdon": total_price}
             return render(request, self.template_name, data)
