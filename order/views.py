@@ -44,8 +44,8 @@ class PayCart(View):
             
             loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
             phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
-            thanhtoan = int(total_price + int(phiship)) 
-            thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+            
+            thanhtoan = int(total_price + total_price * int(phivat) / 100 + int(phiship))
             
             data = {"title": "Đặt hàng", "khachhang": khachhang, "phiship": phiship, "phivat": phivat, "thanhtoan": thanhtoan, "giohang": giohang}
             return render(request, self.template_name, data)
@@ -73,8 +73,8 @@ class PayCart(View):
             
             loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
             phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
-            thanhtoan = int(total_price + int(phiship)) 
-            thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+            
+            thanhtoan = int(total_price + total_price * int(phivat) / 100 + int(phiship))
             
             phone_regex = re.compile(r'^(03|05|07|08|09)\d{8}$')
             if(bool(phone_regex.match(phone)) == False):
@@ -86,8 +86,8 @@ class PayCart(View):
             
             loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
             phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
-            thanhtoan = int(total_price + int(phiship)) 
-            thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+            
+            thanhtoan = int(total_price + total_price * int(phivat) / 100 + int(phiship))
             
             donhang = DonHang.objects.create(KhachHang=khachhang, SoDienThoai=phone, DiaChi=address, GhiChu=note, TongTien=thanhtoan, TrangThai="cxl")
             donhang.save()

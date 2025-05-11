@@ -33,8 +33,7 @@ class CartList(View):
         loaithongtin = LoaiThongTin.objects.all().get(MaLoai="phivat")
         phivat = ThongTin.objects.all().get(LoaiThongTin=loaithongtin).GiaTri
         
-        thanhtoan = int(total_price + int(phiship)) 
-        thanhtoan = thanhtoan + int(thanhtoan * int(phivat) / 100)
+        thanhtoan = int(total_price + total_price * int(phivat) / 100 + int(phiship))
         
         data = {"title": "Giỏ hàng", "giohang": giohang, "mausac": mausac, "thanhtoan": thanhtoan, "phiship": phiship, "phivat": phivat, "total_price": total_price}
         return render(request, self.template_name, data)
