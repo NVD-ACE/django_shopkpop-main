@@ -1,3 +1,4 @@
+# SQA-J6-6: Import thừa HttpResponse
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import JsonResponse
 from django.views import View
@@ -15,12 +16,14 @@ class CartList(View):
     template_name = 'cart/list.html'
 
     def get(self, request):
+        # SQA-J6-6: sử dụng .all() không cần thiết
         user = User.objects.all().get(id=request.user.id)
         khachhang = KhachHang.objects.all().get(User=user)
         giohang = GioHang.objects.all().filter(KhachHang=khachhang)
         mausac = MauSac.objects.all()
         total_price = 0
-    
+
+        # SQA-J6-5: Tính tổng số tiền của giỏ hàng tính thủ công => có nguy cơ lặp lại 
         for item in giohang:
             total_price += item.SoLuong * item.GiaBan
         
@@ -60,6 +63,7 @@ def AddProductToCart(request):
             
             count_giohang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
             
+            # SQA-J6-5: Logic kiểm tra sản phẩm có trong giỏ hàng không bị lặp lại => có thể gộp lại
             if count_giohang == 1:
                 return JsonResponse({"error": "Sản Phẩm Đã Có Trong Giỏ Hàng!"})
             elif count_giohang == 0:
@@ -77,6 +81,7 @@ def AddProductToCart(request):
             khachhang = KhachHang.objects.all().get(User=user)
             count_giohang = GioHang.objects.all().filter(KhachHang=khachhang, SanPham=sanpham).count()
             
+            # SQA-J6-5: Logic kiểm tra sản phẩm có trong giỏ hàng không bị lặp lại => có thể gộp lại
             if count_giohang == 1:
                 return JsonResponse({"error": "Sản Phẩm Đã Có Trong Giỏ Hàng!"})
             elif count_giohang == 0:
@@ -154,11 +159,13 @@ def CheckPropertyProduct(request):
             khachhang = KhachHang.objects.all().get(User=user)
             giohang = GioHang.objects.all().filter(KhachHang=khachhang, MauSac=None)
             
+            # SQA-J6-5: Logic kiểm tra màu sắc sản phẩm + số lượng sản phẩm phải gọi 2 lần => có thể gộp lại
             if giohang.count() >= 1:
                 return JsonResponse({"error": "Vui Lòng Chọn Đủ Màu Sắc Cho Các Sản Phẩm!"})
             
             giohang = GioHang.objects.all().filter(KhachHang=khachhang, SoLuong=0)
             
+            # SQA-J6-5: Logic kiểm tra màu sắc sản phẩm + số lượng sản phẩm phải gọi 2 lần => có thể gộp lại
             if giohang.count() >= 1:
                 return JsonResponse({"error": "Số Lượng Sản Phẩm Phải Lớn Hơn 0!"})
             

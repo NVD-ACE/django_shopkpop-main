@@ -1,3 +1,4 @@
+# SQA-J6-6: Import thừa back
 from turtle import back
 from django.db import models
 from customer.models import KhachHang

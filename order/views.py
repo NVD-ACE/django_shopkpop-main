@@ -1,3 +1,4 @@
+# SQA-J6-6: Import thừa redirect_stderr
 from contextlib import redirect_stderr
 from django.shortcuts import render, redirect
 from django.views import View
@@ -32,7 +33,8 @@ class PayCart(View):
             giohang = GioHang.objects.all().filter(KhachHang=khachhang)
             
             total_price = 0
-    
+
+            # SQA-J6-5: Tính tổng số tiền của giỏ hàng tính thủ công => có nguy cơ lặp lại 
             for item in giohang:
                 total_price += item.SoLuong * item.GiaBan
                 item.GiaTien = item.GiaBan * item.SoLuong
@@ -60,7 +62,8 @@ class PayCart(View):
             giohang = GioHang.objects.all().filter(KhachHang=khachhang)
             
             total_price = 0
-    
+
+            # SQA-J6-5: Tính tổng số tiền của giỏ hàng tính thủ công => có nguy cơ lặp lại 
             for item in giohang:
                 total_price += item.SoLuong * item.GiaBan
                 item.GiaTien = item.GiaBan * item.SoLuong
